@@ -62,6 +62,7 @@ public class SupervisorController
     }
 
     @GetMapping("/uml")
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     public String uml()
     {
         return new SupervisorUml().toString();

@@ -3,6 +3,7 @@ package dev.hotdeals.sonito;
 import dev.hotdeals.sonito.supervisor.Supervisor;
 import dev.hotdeals.sonito.supervisor.SupervisorController;
 import dev.hotdeals.sonito.supervisor.SupervisorRepo;
+import dev.hotdeals.sonito.supervisor.SupervisorUml;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -305,5 +306,24 @@ class SupervisorControllerTests
         reset(supervisorRepo);
     }
 
+    //endregion
+    //region Uml Tests
+    @Test
+    @DisplayName("GET /supervisor/uml should return status code 418")
+    void umlStatusCodeTest() throws Exception
+    {
+        mvc.perform(get("/supervisor/uml")).andExpect(status().isIAmATeapot());
+        reset(supervisorRepo);
+    }
+
+    @Test
+    @DisplayName("PUT /student/uml should return uml for the Student Entity")
+    void umlTest() throws Exception
+    {
+        String uml = new SupervisorUml().toString();
+
+        mvc.perform(get("/supervisor/uml")).andExpect(content().string(uml));
+        reset(supervisorRepo);
+    }
     //endregion
 }

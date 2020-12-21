@@ -3,6 +3,7 @@ package dev.hotdeals.sonito;
 import dev.hotdeals.sonito.student.Student;
 import dev.hotdeals.sonito.student.StudentController;
 import dev.hotdeals.sonito.student.StudentRepo;
+import dev.hotdeals.sonito.student.StudentUml;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -305,5 +306,24 @@ class StudentControllerTests
         reset(studentRepo);
     }
 
+    //endregion
+    //region Uml Tests
+    @Test
+    @DisplayName("GET /student/uml should return status code 418")
+    void umlStatusCodeTest() throws Exception
+    {
+        mvc.perform(get("/student/uml")).andExpect(status().isIAmATeapot());
+        reset(studentRepo);
+    }
+
+    @Test
+    @DisplayName("PUT /student/uml should return uml for the Student Entity")
+    void umlTest() throws Exception
+    {
+        String uml = new StudentUml().toString();
+
+        mvc.perform(get("/student/uml")).andExpect(content().string(uml));
+        reset(studentRepo);
+    }
     //endregion
 }

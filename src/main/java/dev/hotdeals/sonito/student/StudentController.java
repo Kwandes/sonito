@@ -62,6 +62,7 @@ public class StudentController
     }
 
     @GetMapping("/uml")
+    @ResponseStatus(HttpStatus.I_AM_A_TEAPOT)
     public String uml()
     {
         return new StudentUml().toString();
