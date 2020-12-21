@@ -2,6 +2,7 @@ import React from 'react';
 import './CreateStudent.css'
 import HttpService from "../service/HttpService";
 
+// Used within home, is a left side menu thatv allows creation of a student
 export default class CreateStudent extends React.Component
 {
 

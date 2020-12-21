@@ -3,6 +3,7 @@ import HttpService from "../service/HttpService";
 import './StudentList.css'
 import StudentRow from "./StudentRow";
 
+// Student list is displayed on the right side of the screen and contains information about students (duh)
 export default class StudentList extends React.Component
 {
     constructor(props)
@@ -39,6 +40,7 @@ export default class StudentList extends React.Component
 
     render()
     {
+        // Split the students list into specific users and fill up the list
         const studentList = this.state.students.map((student, index) =>
         {
             let supervisor = student.supervisor;

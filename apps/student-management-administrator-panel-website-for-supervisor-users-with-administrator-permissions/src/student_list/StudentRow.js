@@ -2,6 +2,7 @@ import React from 'react';
 import './StudentRow.css'
 import HttpService from "../service/HttpService";
 
+// Used within student list, contains information about a single student
 export default class StudentRow extends React.Component
 {
     constructor(props)
