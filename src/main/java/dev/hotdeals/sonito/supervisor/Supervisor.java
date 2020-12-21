@@ -3,6 +3,7 @@ package dev.hotdeals.sonito.supervisor;
 import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 @Table(name = "supervisor")
 public class Supervisor
 {
@@ -19,9 +20,8 @@ public class Supervisor
     @Column(name = "email", length = 255)
     private String email;
 
-    public Supervisor(long id, String name, String email)
+    public Supervisor(String name, String email)
     {
-        this.id = id;
         this.name = name;
         this.email = email;
     }
