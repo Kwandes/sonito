@@ -1,0 +1,36 @@
+#StudentList
+{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    max-height: 80vh;
+    width: fit-content;
+    border-radius: 10px;
+    margin: 2.5vw;
+    padding: 2.5vw;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    overflow: scroll;
+    overflow-x: hidden;
+    scrollbar-base-color: #282c34;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    /*linear-gradient(to right, salmon , beige, darkcyan, beige, mediumpurple, beige, darkcyan, beige, salmon)*/
+    background: linear-gradient(180deg, indianred, orangered, darkorange, yellow, greenyellow, lawngreen, deepskyblue, darkslateblue, rebeccapurple);
+    box-shadow: inset 2px 2px 2px hsla(0, 0%, 100%, .25), inset -2px -2px 2px rgba(0, 0, 0, .25);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.8);
+}
