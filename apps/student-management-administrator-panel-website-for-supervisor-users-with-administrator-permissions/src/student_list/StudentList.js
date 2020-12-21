@@ -1,6 +1,7 @@
 import React from 'react';
 import HttpService from "../service/HttpService";
 import './StudentList.css'
+import StudentRow from "./StudentRow";
 
 export default class StudentList extends React.Component
 {
@@ -14,28 +15,6 @@ export default class StudentList extends React.Component
 
     componentDidMount()
     {
-        /*const students = [
-            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
-            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
-            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
-            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
-            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
-            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
-            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
-            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
-            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
-            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
-            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
-            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
-            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
-            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
-            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
-        ]*/
-        /*
-        this.setState({
-            students: students
-        })*/
-
         this.getStudentList();
     }
 
@@ -62,11 +41,26 @@ export default class StudentList extends React.Component
     {
         const studentList = this.state.students.map((student, index) =>
         {
+            let supervisor = student.supervisor;
+            if (!supervisor)
+            {
+                supervisor = {
+                    id: '',
+                    name: 'No supervisor',
+                    email: ''
+                }
+            }
+
             return (
-                <div>
-                    <ul key={index}>
-                        <li>{student.name} - {student.email}</li>
-                    </ul>
+                <div className={'StudentInfoRow'} key={index}>
+                    <StudentRow id={student.id} name={student.name} email={student.email} supervisor={supervisor}/>
+                    {/*<label>Name: <input className={'StudentInfo'} type="text" value={student.name}/></label>*/}
+                    {/*<label>Email: <input className={'StudentInfo'} type="text" value={student.email}/></label>*/}
+                    {/*<br/><br/>*/}
+                    {/*<label>Supervisor: <input className={'StudentInfo'} type="text"*/}
+                    {/*                          value={student.supervisorId}/></label>*/}
+
+                    {/*<input type="button" value={'UPDATE'}/><input type="button" value={'DELETE'}/>*/}
                 </div>
             )
         });
