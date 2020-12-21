@@ -1,4 +1,5 @@
 import React from 'react';
+import HttpService from "../service/HttpService";
 import './StudentList.css'
 
 export default class StudentList extends React.Component
@@ -13,26 +14,48 @@ export default class StudentList extends React.Component
 
     componentDidMount()
     {
-        const students = [
-            {name: "Cristi", email: "prucia@hotmail"},
-            {name: "alex", email: "nyan@hotmail"},
-            {name: "teo", email: "dane@hotmail"},
-            {name: "Cristi", email: "prucia@hotmail"},
-            {name: "alex", email: "nyan@hotmail"},
-            {name: "teo", email: "dane@hotmail"},
-            {name: "Cristi", email: "prucia@hotmail"},
-            {name: "alex", email: "nyan@hotmail"},
-            {name: "teo", email: "dane@hotmail"},
-            {name: "Cristi", email: "prucia@hotmail"},
-            {name: "alex", email: "nyan@hotmail"},
-            {name: "teo", email: "dane@hotmail"},
-            {name: "Cristi", email: "prucia@hotmail"},
-            {name: "alex", email: "nyan@hotmail"},
-            {name: "teo", email: "dane@hotmail"},
-        ]
+        /*const students = [
+            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
+            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
+            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
+            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
+            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
+            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
+            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
+            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
+            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
+            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
+            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
+            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
+            {name: "Cristi", email: "prucia@hotmail", supervisor: "Jan"},
+            {name: "alex", email: "nyan@hotmail", supervisor: "Jan2"},
+            {name: "teo", email: "dane@hotmail", supervisor: "Jan3"},
+        ]*/
+        /*
         this.setState({
             students: students
-        })
+        })*/
+
+        this.getStudentList();
+    }
+
+    getStudentList()
+    {
+        HttpService
+            .get("/student")
+            .then((response) =>
+            {
+                console.log("getStudentList Response :");
+                console.log(response.data);
+
+                this.setState({
+                    students: response.data,
+                });
+            })
+            .catch((e) =>
+            {
+                console.log(e);
+            });
     }
 
     render()
