@@ -13,7 +13,7 @@ export default class CreateStudent extends React.Component
         this.state = {
             name: "",
             email: "",
-            supervisorId: 0
+            supervisorId: null
         }
     }
 
@@ -21,6 +21,11 @@ export default class CreateStudent extends React.Component
     {
         console.log(this.state.name + " " + this.state.email + " " + this.state.supervisorId)
 
+        if (this.state.name === "" || this.state.email === "" || this.state.supervisorId == null )
+        {
+            alert("You have to fill in all fields before creating a student");
+            return;
+        }
 
         HttpService.post("/student", {
             name: this.state.name,
