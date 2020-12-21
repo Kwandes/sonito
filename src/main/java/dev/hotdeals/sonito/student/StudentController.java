@@ -14,27 +14,27 @@ public class StudentController
     @Autowired
     private StudentRepo studentRepo;
 
-    @GetMapping("/students")
+    @GetMapping("")
     public List<Student> findAll()
     {
         return studentRepo.findAll();
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public Student findOne(@PathVariable Long id)
     {
         return studentRepo.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Failed to find an student with an ID of " + id));
     }
 
-    @PostMapping("/students")
+    @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public Student create(@RequestBody Student newStudent)
     {
         return studentRepo.save(newStudent);
     }
 
-    @PutMapping("/students/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public Student update(@RequestBody Student newStudent, @PathVariable Long id)
     {
@@ -50,7 +50,7 @@ public class StudentController
                 });
     }
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void delete(@PathVariable Long id)
     {

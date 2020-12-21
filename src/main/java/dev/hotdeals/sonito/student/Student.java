@@ -20,6 +20,16 @@ public class Student
     @Column(name = "email", length = 255)
     private String email;
 
+    public Student(String name, String email)
+    {
+        this.name = name;
+        this.email = email;
+    }
+
+    public Student()
+    {
+    }
+
     public long getId()
     {
         return id;
