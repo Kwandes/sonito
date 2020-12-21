@@ -42,6 +42,7 @@ public class StudentController
                 .map(student -> {
                     student.setName(newStudent.getName());
                     student.setEmail(newStudent.getEmail());
+                    student.setSupervisor(newStudent.getSupervisor());
                     return studentRepo.save(student);
                 })
                 .orElseGet(() -> {

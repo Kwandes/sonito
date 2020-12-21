@@ -1,5 +1,7 @@
 package dev.hotdeals.sonito.student;
 
+import dev.hotdeals.sonito.supervisor.Supervisor;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -20,14 +22,24 @@ public class Student
     @Column(name = "email", length = 255)
     private String email;
 
+    @ManyToOne
+    private Supervisor supervisor;
+
+    public Student()
+    {
+    }
+
     public Student(String name, String email)
     {
         this.name = name;
         this.email = email;
     }
 
-    public Student()
+    public Student(String name, String email, Supervisor supervisor)
     {
+        this.name = name;
+        this.email = email;
+        this.supervisor = supervisor;
     }
 
     public long getId()
@@ -60,6 +72,16 @@ public class Student
         this.email = email;
     }
 
+    public Supervisor getSupervisor()
+    {
+        return supervisor;
+    }
+
+    public void setSupervisor(Supervisor supervisor)
+    {
+        this.supervisor = supervisor;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -68,12 +90,13 @@ public class Student
         Student student = (Student) o;
         return id == student.id &&
                 Objects.equals(name, student.name) &&
-                Objects.equals(email, student.email);
+                Objects.equals(email, student.email) &&
+                Objects.equals(supervisor, student.supervisor);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(id, name, email);
+        return Objects.hash(id, name, email, supervisor);
     }
 }
