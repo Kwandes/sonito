@@ -43,6 +43,8 @@ export default class CreateStudent extends React.Component
             {
                 console.log(e);
             });
+
+        window.location.reload(false);
     }
 
     updateInfo = (type, text) =>

@@ -27,11 +27,11 @@ export default class StudentRow extends React.Component
 
         return (
             <>
-                <label>Name: <input className={'StudentInfo'} type="text" value={this.state.name}/></label>
-                <label>Email: <input className={'StudentInfo'} type="text" value={this.state.email}/></label>
+                <label>Name: <input className={'StudentInfo'} type="text" defaultValue={this.state.name}/></label>
+                <label>Email: <input className={'StudentInfo'} type="text" defaultValue={this.state.email}/></label>
                 <br/><br/>
                 <label>Supervisor: <input className={'StudentInfo'} type="text"
-                                          value={this.state.supervisor.name}/></label>
+                                          defaultValue={this.state.supervisor.name}/></label>
 
                 <input type="button" value={'UPDATE'}/><input type="button" value={'DELETE'}/>
             </>
