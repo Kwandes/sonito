@@ -19,16 +19,8 @@ export default class StudentRow extends React.Component
         }
     }
 
-    componentDidMount()
-    {
-    }
-
     updateStudent()
     {
-        console.log("name: " + this.state.name);
-        console.log("email: " + this.state.email);
-        console.log("id: " + this.state.id);
-        console.log("super id: " + this.state.supervisor.id);
         HttpService
             .put("/student/" + this.state.id, {
                     id: parseInt(this.state.id), // Javascript types thing is awful
@@ -58,6 +50,7 @@ export default class StudentRow extends React.Component
             .catch((e) =>
             {
                 console.log(e);
+                alert('Provided information is invalid. Make sure to specify the supervisor')
             });
     }
 
@@ -78,20 +71,6 @@ export default class StudentRow extends React.Component
             });
     }
 
-    updateInfo = (type, text) =>
-    {
-        if (type === 'name')
-        {
-            this.setState({name: text});
-        } else if (type === 'email')
-        {
-            this.setState({email: text});
-        } else if (type === 'supervisorId')
-        {
-            this.setState({supervisorId: text});
-        }
-    }
-
     render()
     {
 
@@ -106,8 +85,8 @@ export default class StudentRow extends React.Component
                                           defaultValue={this.state.supervisor.id}
                                           onChange={event => this.setState({supervisor: {id: event.target.value}})}/></label>
 
-                <input type="button" value={'UPDATE'} onClick={() => this.updateStudent()}/>
-                <input type="button" value={'DELETE'} onClick={() => this.deleteStudent()}/>
+                <input id={'StudentUpdateBtn'} type="button" value={'UPDATE'} onClick={() => this.updateStudent()}/>
+                <input id={'StudentDeleteBtn'} type="button" value={'DELETE'} onClick={() => this.deleteStudent()}/>
             </>
         )
 

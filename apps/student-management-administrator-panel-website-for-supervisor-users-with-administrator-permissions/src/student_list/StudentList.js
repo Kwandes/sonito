@@ -45,7 +45,7 @@ export default class StudentList extends React.Component
             if (!supervisor)
             {
                 supervisor = {
-                    id: '',
+                    id: 'No supervisor',
                     name: 'No supervisor',
                     email: ''
                 }
@@ -54,13 +54,6 @@ export default class StudentList extends React.Component
             return (
                 <div className={'StudentInfoRow'} key={index}>
                     <StudentRow id={student.id} name={student.name} email={student.email} supervisor={supervisor}/>
-                    {/*<label>Name: <input className={'StudentInfo'} type="text" value={student.name}/></label>*/}
-                    {/*<label>Email: <input className={'StudentInfo'} type="text" value={student.email}/></label>*/}
-                    {/*<br/><br/>*/}
-                    {/*<label>Supervisor: <input className={'StudentInfo'} type="text"*/}
-                    {/*                          value={student.supervisorId}/></label>*/}
-
-                    {/*<input type="button" value={'UPDATE'}/><input type="button" value={'DELETE'}/>*/}
                 </div>
             )
         });
