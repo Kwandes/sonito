@@ -1,4 +1,4 @@
-package dev.hotdeals.sonito.model;
+package dev.hotdeals.sonito.student;
 
 import javax.persistence.*;
 import java.util.Objects;

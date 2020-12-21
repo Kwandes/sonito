@@ -1,4 +1,4 @@
-package dev.hotdeals.sonito.uml;
+package dev.hotdeals.sonito.student;
 
 public class StudentUml
 {
