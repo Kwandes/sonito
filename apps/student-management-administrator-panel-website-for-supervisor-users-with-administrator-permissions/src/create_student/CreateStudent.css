@@ -27,3 +27,19 @@
 {
     color: white;
 }
+
+#StudentContainer #CreateStudentBtn
+{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 2vw;
+    padding: 0.5vw;
+    background-color: darkslateblue;
+    border-bottom: none;
+    border-radius: 6px;
+}
+
+#StudentContainer #CreateStudentBtn:hover
+{
+    transform:scale(1.1);
+    box-shadow: none;
+}
