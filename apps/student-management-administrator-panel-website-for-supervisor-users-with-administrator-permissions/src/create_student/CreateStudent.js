@@ -10,12 +10,38 @@ export default class CreateStudent extends React.Component
     {
         super(props);
         this.createUser = this.createUser.bind(this);
+        this.getSupervisorList = this.getSupervisorList.bind(this);
 
         this.state = {
             name: "",
             email: "",
-            supervisorId: null
+            supervisorId: null,
+            supervisors: [],
         }
+    }
+
+    componentDidMount()
+    {
+        this.getSupervisorList();
+    }
+
+    getSupervisorList()
+    {
+        HttpService
+            .get("/supervisor")
+            .then((response) =>
+            {
+                console.log("getSupervisorList Response :");
+                console.log(response.data);
+
+                this.setState({
+                    supervisors: response.data,
+                });
+            })
+            .catch((e) =>
+            {
+                console.log(e);
+            });
     }
 
     createUser()
@@ -62,6 +88,7 @@ export default class CreateStudent extends React.Component
         }
     }
 
+
     render()
     {
         return (
@@ -69,8 +96,17 @@ export default class CreateStudent extends React.Component
                 <h3>Create your very own Student</h3>
                 <input type="text" placeholder={"name"} onChange={e => this.updateInfo('name', e.target.value)}/>
                 <input type="text" placeholder={"email"} onChange={e => this.updateInfo('email', e.target.value)}/>
-                <input type="number" placeholder={"supervisor ID"}
-                       onChange={e => this.updateInfo('supervisorId', e.target.value)}/>
+
+
+                <select id={"SupervisorSelect"} onChange={e => this.setState({supervisorId: e.target.value})}>
+                    <option value={null}>supervisor</option>
+                    {this.state.supervisors.map((supervisor) => (
+                        <option key={supervisor.id}
+                                value={supervisor.id}>{supervisor.id + ' | ' + supervisor.name + ' | ' + supervisor.email}
+                        </option>
+                    ))}
+                </select>
+
                 <input type={'button'} id={'CreateStudentBtn'} value={'Create Student'}
                        onClick={() => this.createUser()}/>
             </div>
